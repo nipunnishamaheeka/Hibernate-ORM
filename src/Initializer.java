@@ -6,6 +6,9 @@ import org.hibernate.Transaction;
 public class Initializer {
     public static void main(String[] args) {
 
+
+
+
         //Save
         Session session = SessionFactoryConfig
                 .getInstance()
@@ -30,36 +33,27 @@ public class Initializer {
 
 //Update
 
-        //Session updateSession = SessionFactoryConfig.getInstance().getSession();
-
-        Transaction transaction1 = session.beginTransaction();
+        Transaction updateTransaction = session.beginTransaction();
 
         extstingCustomer.setName("A");
 
         session.update(extstingCustomer);
 
-        transaction1.commit();
+        updateTransaction.commit();
         System.out.println(extstingCustomer);
 
     //Delete
 
-        Transaction Deletetransaction = session.beginTransaction();
+        Transaction deleteTransaction = session.beginTransaction();
 
         Customer customerDel = session.get(Customer.class,1);
 
         session.delete(customerDel);
 
-        Deletetransaction.commit();
+        deleteTransaction.commit();
        // System.out.println(extstingCustomer);
 
     }
 
-//    private static Customer getCustomer() {
-//        Customer customer = new Customer();
-//        customer.setId(003);
-//        customer.setName("Rithik");
-//        customer.setAddress("Kandy");
-//        customer.setSalary(25550.00);
-//        return customer;
-//    }
+
 }
