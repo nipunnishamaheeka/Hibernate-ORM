@@ -8,10 +8,10 @@ public class Initializer {
         Session session = SessionFactoryConfig.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         Customer customer = new Customer();
-        customer.setId(001);
-        customer.setName("Amal");
-        customer.setAddress("Galle");
-        customer.setSalary(45550.00);
+        customer.setId(003);
+        customer.setName("Rithik");
+        customer.setAddress("Kandy");
+        customer.setSalary(25550.00);
 
         session.save(customer);
         transaction.commit();
