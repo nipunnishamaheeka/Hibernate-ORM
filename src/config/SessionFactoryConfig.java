@@ -9,9 +9,21 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 public class SessionFactoryConfig {
-    private static SessionFactoryConfig factoryConfig;
+    public static SessionFactoryConfig factoryConfig;
+
+    private final SessionFactory sessionFactory;
 
     private SessionFactoryConfig() {
+        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+                .loadProperties("hibernate.properties")
+                .build();
+        // 2. Creates a MetaData object
+        Metadata metadata = new MetadataSources(serviceRegistry)
+                .addAnnotatedClass(Customer.class)
+                .getMetadataBuilder().build();
+// 3. Create Factory
+        sessionFactory = metadata.buildSessionFactory();
+
     }
 
     public static SessionFactoryConfig getInstance() {
@@ -20,15 +32,8 @@ public class SessionFactoryConfig {
     }
 
     public Session getSession() {
-        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-                .loadProperties("hibernate.properties")
-                .build();
-        // 2. Creates a MetaData object
-        Metadata metadata = new MetadataSources(serviceRegistry)
-                .addAnnotatedClass(Customer.class)
-                .getMetadataBuilder().build();
 
-        SessionFactory sessionFactory = metadata.buildSessionFactory();
+        // 4. Create and open
         return sessionFactory.openSession();
 
     }
