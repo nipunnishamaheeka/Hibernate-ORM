@@ -20,12 +20,23 @@ public class Customer {
     @Column(name = "customer_salary")
     private Double salary;
 
-    public Customer(int id, String name, String address, Double salary) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.salary = salary;
+    @Column(name = "mobile_number")
+    private int mobileNumber;
+
+    public int getMobileNumber() {
+        return mobileNumber;
     }
+
+    public void setMobileNumber(int mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+//    public Customer(int id, String name, String address, Double salary) {
+//        this.id = id;
+//        this.name = name;
+//        this.address = address;
+//        this.salary = salary;
+//    }
 
     public Customer() {
     }
@@ -70,6 +81,7 @@ public class Customer {
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", salary=" + salary +
+                ", mobileNumber=" + mobileNumber +
                 '}';
     }
 }

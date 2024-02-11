@@ -19,6 +19,7 @@ public class Initializer {
         customer.setName("Rithik");
         customer.setAddress("Kandy");
         customer.setSalary(25550.00);
+        customer.setMobileNumber(07624112554);
 
         Transaction transaction = session.beginTransaction();
         session.save(customer);
@@ -27,12 +28,13 @@ public class Initializer {
 
 
         //Get
-
+        System.out.println("=====================Get======================");
         Customer extstingCustomer = session.get(Customer.class, 1);
+        System.out.println("ExistingCustomer"+extstingCustomer);
 
 
 //Update
-
+        System.out.println("=====================Update======================");
         Transaction updateTransaction = session.beginTransaction();
 
         extstingCustomer.setName("A");
@@ -43,7 +45,7 @@ public class Initializer {
         System.out.println(extstingCustomer);
 
     //Delete
-
+        System.out.println("=====================Delete======================");
         Transaction deleteTransaction = session.beginTransaction();
 
         Customer customerDel = session.get(Customer.class,1);
@@ -51,7 +53,7 @@ public class Initializer {
         session.delete(customerDel);
 
         deleteTransaction.commit();
-       // System.out.println(extstingCustomer);
+        System.out.println(customerDel);
 
     }
 
