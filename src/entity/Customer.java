@@ -61,5 +61,5 @@ public class Customer {
     public void setSalary(Double salary) {
         this.salary = salary;
     }
-
+//check
 }
