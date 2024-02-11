@@ -1,15 +1,26 @@
 package entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Timestamp;
 
 //@Entity(name = "customer")
 @Entity
 @Table(name = "customer")
 public class Customer {
 
+    //Create and update dekama ekapara use wenna be
+
+
+@CreationTimestamp
+@UpdateTimestamp
+@Column(name = "date_type")
+    private Timestamp createdDateType;
     @Id // Tells Hibernate that this is the primary key of this annotation
     @Column(name = "custmer_id")
     private int id;
