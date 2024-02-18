@@ -1,5 +1,6 @@
 package entity;
 
+import embedded.NameIdentifier;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -14,18 +15,18 @@ import java.sql.Timestamp;
 @Table(name = "customer")
 public class Customer {
 
+
+    @CreationTimestamp
+    @UpdateTimestamp
     //Create and update dekama ekapara use wenna be
-
-
-@CreationTimestamp
-@UpdateTimestamp
-@Column(name = "date_type")
+    @Column(name = "date_type")
     private Timestamp createdDateType;
+
     @Id // Tells Hibernate that this is the primary key of this annotation
     @Column(name = "custmer_id")
     private int id;
     @Column(name = "customer_name")
-    private String name;
+    private NameIdentifier name;
     @Column(name = "customer_address")
     private String address;
     @Column(name = "customer_salary")
@@ -60,13 +61,13 @@ public class Customer {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
+//    public String getName() {
+//        return name;
+//    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
     public String getAddress() {
         return address;
@@ -83,8 +84,6 @@ public class Customer {
     public void setSalary(Double salary) {
         this.salary = salary;
     }
-//check
-
     @Override
     public String toString() {
         return "Customer{" +

@@ -7,6 +7,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 
 public class SessionFactoryConfig {
     public static SessionFactoryConfig factoryConfig;
@@ -14,16 +15,19 @@ public class SessionFactoryConfig {
     private final SessionFactory sessionFactory;
 
     private SessionFactoryConfig() {
-        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-                .loadProperties("hibernate.properties")
-                .build();
-        // 2. Creates a MetaData object
-        Metadata metadata = new MetadataSources(serviceRegistry)
-                .addAnnotatedClass(Customer.class)
-                .getMetadataBuilder().build();
-// 3. Create Factory
-        sessionFactory = metadata.buildSessionFactory();
 
+        // 2. Creates a MetaData object
+//       sessionFactory= new MetadataSources(new StandardServiceRegistryBuilder()
+//                .loadProperties("hibernate.properties")
+//                .build())
+//                .addAnnotatedClass(Customer.class)
+//                .getMetadataBuilder().build()
+//               .buildSessionFactory();
+// 3. Create Factory short
+        sessionFactory = new Configuration()
+                .configure()
+                .addAnnotatedClass(Customer.class)
+                .buildSessionFactory();
     }
 
     public static SessionFactoryConfig getInstance() {
