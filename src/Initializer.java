@@ -39,7 +39,9 @@ public class Initializer {
         //Update
         System.out.println("=====================Update======================");
 //        Transaction updateTransaction = session.beginTransaction();
-
+        customerRepository = new CustomerRepository();
+        customer.setAddress("Galle");
+        customerRepository.updateCustomer(customer);
         //extstingCustomer.setName("A");
 
 //        session.update(extstingCustomer);
@@ -48,6 +50,8 @@ public class Initializer {
 //        System.out.println(extstingCustomer);
 
         //Delete
+
+
 //        System.out.println("=====================Delete======================");
 //        Transaction deleteTransaction = session.beginTransaction();
 //
